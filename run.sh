@@ -114,14 +114,14 @@ fi
 
 # .htaccess
 # ---------
-#if [ ! -f /app/.htaccess ]; then
-#  printf "=> Generating .htaccess file... "
-#  sudo -u www-data wp rewrite flush --hard >/dev/null 2>&1 || \
-#    ERROR $LINENO "Could not generate .htaccess file"
-#  printf "Done!\n"
-#else
-#  printf "=> .htaccess exists. SKIPPING...\n"
-#fi
+if [ ! -f /app/.htaccess ]; then
+  printf "=> Generating .htaccess file... "
+  sudo -u www-data wp rewrite flush --hard >/dev/null 2>&1 || \
+    ERROR $LINENO "Could not generate .htaccess file"
+  printf "Done!\n"
+else
+  printf "=> .htaccess exists. SKIPPING...\n"
+fi
 
 
 # Filesystem Permissions
