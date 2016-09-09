@@ -1,5 +1,6 @@
 #!/bin/bash
 
+[ "$DB_HOST" ]  || DB_HOST='db'
 [ "$DB_NAME" ]  || DB_NAME='wordpress'
 [ "$DB_PASS" ]  || DB_PASS='root'
 [ "$THEMES" ]   || THEMES='twentysixteen'
@@ -28,7 +29,7 @@ core config:
   dbuser: root
   dbpass: $DB_PASS
   dbname: $DB_NAME
-  dbhost: db:3306
+  dbhost: $DB_HOST:3306
   extra-php: |
     define('WP_DEBUG', ${WP_DEBUG,,});
     define('WP_DEBUG_LOG', ${WP_DEBUG_LOG,,});
@@ -58,7 +59,7 @@ fi
 # Wait for MySQL
 # --------------
 printf "=> Waiting for MySQL to initialize... \n"
-while ! mysqladmin ping --host=db --password=$DB_PASS --silent; do
+while ! mysqladmin ping --host=$DB_HOST --password=$DB_PASS --silent; do
   sleep 1
 done
 
