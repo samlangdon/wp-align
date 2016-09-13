@@ -203,7 +203,7 @@ printf "\t%s\n" \
 
 #SL: install NFS and write hostname of permapp container to allow access
 sudo apt-get update \
-    && apt-get install -y nano nfs-kernel-server nfs-common \
+    && apt-get install -y nfs-kernel-server nfs-common \
     && service rpcbind start \
     && echo '/app permapp(rw,sync,no_root_squash,no_subtree_check)' >> /etc/exports \
     && /etc/init.d/nfs-kernel-server restart
