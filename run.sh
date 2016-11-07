@@ -205,7 +205,7 @@ printf "\t%s\n" \
 sudo apt-get update \
     && apt-get install -y nfs-kernel-server nfs-common \
     && service rpcbind start \
-    && echo '/app permapp(rw,sync,no_root_squash,no_subtree_check)' >> /etc/exports \
+    && echo $'/app permapp(rw,sync,no_root_squash,no_subtree_check)\n/etc/apache2/sites-available/ permapp(rw,sync,no_root_squash,no_subtree_check)' >> /etc/exports \
     && /etc/init.d/nfs-kernel-server restart
 
 
